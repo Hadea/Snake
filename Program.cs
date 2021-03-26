@@ -5,10 +5,12 @@ namespace Testumgebung
 {
     class Program
     {
+        public static bool KeepRunning;
         static void Main(string[] args)
         {
             List<IGameObject> gameObjectList = new();
             Console.CursorVisible = false;
+            KeepRunning = true;
 
             FPSCounter timer = new FPSCounter();
             Board someText = new Board();
@@ -26,7 +28,7 @@ namespace Testumgebung
                 for (int count = 0; count < gameObjectList.Count; count++)
                     gameObjectList[count].Update();
 
-            } while (!Console.KeyAvailable);
+            } while (KeepRunning);
         }
     }
 }
